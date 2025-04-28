@@ -82,7 +82,7 @@
         const message = contactForm.querySelector('textarea[name="message"]').value;
         const whatsappNumber = '+1234567890'; // Replace with your WhatsApp number
         const whatsappMessage = `Name: ${name}\nEmail: ${email}\nMessage: ${message}`;
-        const whatsappUrl = `https://wa.me/${"01558042651"}?text=${encodeURIComponent(whatsappMessage)}`;
+        const whatsappUrl = `https://wa.me/${"1558042651"}?text=${encodeURIComponent(whatsappMessage)}`;
         window.open(whatsappUrl, '_blank');
         contactForm.reset();
     });
