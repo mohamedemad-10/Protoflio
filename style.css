@@ -1,0 +1,1411 @@
+/* Theme Variables */
+:root {
+    --barca-blue: #004D98;
+    --barca-red: #A50044;
+    --barca-yellow: #EDBB00;
+    --barca-light: #F2F2F2;
+    --barca-dark: #181733;
+    /* Light Theme */
+    --bg-primary: var(--barca-light);
+    --text-primary: var(--barca-dark);
+    --section-bg: #FFFFFF;
+    --card-bg: #FFFFFF;
+    --shadow: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+    /* Dark Theme */
+    --bg-primary: #1A1A2E;
+    --text-primary: #E0E0E0;
+    --section-bg: #16213E;
+    --card-bg: #1F2A44;
+    --shadow: rgba(0, 0, 0, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    scroll-behavior: smooth;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    overflow-x: hidden;
+}
+
+/* Loading Screen */
+#loading {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: var(--barca-dark);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease-out;
+}
+
+.loader {
+    width: clamp(80px, 15vw, 100px);
+    height: clamp(80px, 15vw, 100px);
+    border: 8px solid var(--barca-blue);
+    border-radius: 50%;
+    border-top: 8px solid var(--barca-red);
+    border-bottom: 8px solid var(--barca-yellow);
+    animation: spin 1.5s linear infinite;
+    margin-bottom: 15px;
+    will-change: transform;
+}
+
+.barca-logo {
+    width: clamp(50px, 10vw, 60px);
+    height: clamp(50px, 10vw, 60px);
+    background: conic-gradient(var(--barca-blue) 25%, var(--barca-red) 0 50%, var(--barca-blue) 0 75%, var(--barca-red) 0);
+    border-radius: 50%;
+    position: relative;
+    animation: pulse 2s infinite;
+    will-change: transform;
+}
+
+.barca-logo::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: clamp(30px, 6vw, 40px);
+    height: clamp(30px, 6vw, 40px);
+    background-color: var(--barca-yellow);
+    border-radius: 50%;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Navigation */
+nav {
+    background: linear-gradient(45deg, rgba(24, 23, 51, 0.8), rgba(0, 77, 152, 0.8));
+    backdrop-filter: blur(10px);
+    color: white;
+    padding: 0.8rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 15px var(--shadow);
+    transition: all 0.3s ease;
+}
+
+nav.scrolled {
+    padding: 0.6rem 0.8rem;
+    background: linear-gradient(45deg, rgba(24, 23, 51, 0.9), rgba(0, 77, 152, 0.9));
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(1rem, 3vw, 1.5rem);
+}
+
+.logo {
+    font-size: clamp(1.4rem, 4vw, 1.6rem);
+    font-weight: 700;
+    color: var(--barca-yellow);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.logo::before {
+    content: '';
+    display: inline-block;
+    width: clamp(24px, 5vw, 28px);
+    height: clamp(24px, 5vw, 28px);
+    margin-right: 8px;
+    background: url('https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg') center/cover no-repeat;
+    border-radius: 50%;
+    animation: spin 8s linear infinite;
+    will-change: transform;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: clamp(1rem, 2vw, 1.5rem);
+    align-items: center;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--barca-yellow);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -6px;
+    left: 0;
+    background: linear-gradient(90deg, var(--barca-red), var(--barca-yellow));
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    color: white;
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.theme-toggle:hover {
+    color: var(--barca-yellow);
+}
+
+.theme-toggle i {
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.theme-toggle:hover i {
+    transform: scale(1.2);
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 36px;
+    height: 36px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.hamburger::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 28px;
+    background: url('https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg') center/cover no-repeat;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.3s ease;
+    will-change: transform;
+}
+
+.hamburger.active::before {
+    transform: translate(-50%, -50%) rotate(180deg);
+}
+
+.hamburger.active::after {
+    content: '×';
+    font-size: 1.8rem;
+    color: var(--barca-yellow);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Hero Section */
+.hero {
+    min-height: clamp(60vh, 100vh, 90vh);
+    background: linear-gradient(135deg, var(--barca-blue) 0%, var(--barca-red) 70%, var(--barca-yellow) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: clamp(2rem, 5vw, 4rem);
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg') center/clamp(80px, 15vw, 100px) repeat;
+    opacity: 0.1;
+    animation: slide 15s linear infinite;
+    will-change: background-position;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 0;
+}
+
+@keyframes slide {
+    0% { background-position: 0 0; }
+    100% { background-position: clamp(80px, 15vw, 100px) clamp(80px, 15vw, 100px); }
+}
+
+.hero-content {
+    max-width: clamp(600px, 90vw, 700px);
+    padding: clamp(1rem, 3vw, 1.5rem);
+    z-index: 1;
+    animation: fadeInUp 1s ease-out;
+}
+
+.hero h1 {
+    font-size: clamp(1.8rem, 6vw, 3rem);
+    font-weight: 800;
+    margin-bottom: clamp(0.8rem, 2vw, 1.2rem);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+    display: inline-block;
+    white-space: nowrap;
+    border-right: 4px solid var(--barca-yellow);
+    overflow: hidden;
+}
+
+.hero h1 span {
+    color: var(--barca-yellow);
+    text-shadow: 0 0 8px var(--barca-yellow);
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+.hero p {
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    margin-bottom: clamp(1.5rem, 4vw, 2rem);
+    opacity: 0.9;
+    line-height: 1.6;
+    max-width: clamp(400px, 80vw, 550px);
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-btns {
+    display: flex;
+    gap: clamp(0.8rem, 2vw, 1.2rem);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn {
+    display: inline-block;
+    padding: clamp(0.6rem, 2vw, 0.9rem) clamp(1.2rem, 3vw, 1.8rem);
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: clamp(0.85rem, 2.5vw, 1rem);
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, var(--barca-blue), var(--barca-red));
+    color: white;
+    box-shadow: 0 4px 12px var(--shadow);
+}
+
+.btn-primary:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px var(--shadow), 0 0 15px var(--barca-yellow);
+    background: linear-gradient(45deg, var(--barca-red), var(--barca-yellow));
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--barca-yellow);
+    border: 2px solid var(--barca-yellow);
+    box-shadow: 0 4px 12px var(--shadow);
+}
+
+.btn-secondary:hover {
+    transform: translateY(-4px);
+    background: var(--barca-yellow);
+    color: var(--barca-dark);
+    box-shadow: 0 8px 16px var(--shadow), 0 0 15px var(--barca-yellow);
+}
+
+/* About Section */
+.section {
+    padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 1.5rem);
+    background-color: var(--section-bg);
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+    position: relative;
+}
+
+.section-title h2 {
+    font-size: clamp(1.8rem, 5vw, 2.2rem);
+    color: var(--text-primary);
+    display: inline-block;
+}
+
+.section-title h2::after {
+    content: '';
+    position: absolute;
+    width: 70px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--barca-blue), var(--barca-red));
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(0.6rem, 2vw, 1rem);
+}
+
+.about-content {
+    display: flex;
+    gap: clamp(1.5rem, 3vw, 2rem);
+    align-items: center;
+}
+
+.about-img {
+    flex: 1;
+    position: relative;
+    max-width: clamp(250px, 40vw, 350px);
+}
+
+.about-img img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px var(--shadow);
+}
+
+.about-img::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--barca-yellow);
+    border-radius: 8px;
+    top: 15px;
+    left: 15px;
+    z-index: -1;
+}
+
+.about-text {
+    flex: 1.5;
+}
+
+.about-text h3 {
+    font-size: clamp(1.4rem, 4vw, 1.8rem);
+    margin-bottom: clamp(0.6rem, 2vw, 0.8rem);
+    color: var(--barca-blue);
+}
+
+.about-text p {
+    margin-bottom: clamp(0.8rem, 2vw, 1.2rem);
+    line-height: 1.5;
+    font-size: clamp(0.85rem, 2.5vw, 0.9rem);
+}
+
+/* Skills Section */
+.skills {
+    background-color: var(--barca-dark);
+    color: white;
+}
+
+.skills .section-title h2 {
+    color: white;
+}
+
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(clamp(200px, 30vw, 220px), 1fr));
+    gap: clamp(1rem, 3vw, 1.5rem);
+}
+
+.skill-box {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: clamp(1rem, 3vw, 1.2rem);
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-box:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 24px var(--shadow);
+}
+
+.skill-box::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(90deg, var(--barca-blue), var(--barca-red));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.skill-box:hover::before {
+    transform: scaleX(1);
+}
+
+.skill-icon {
+    font-size: clamp(2rem, 6vw, 2.5rem);
+    margin-bottom: clamp(0.6rem, 2vw, 0.8rem);
+    color: var(--barca-yellow);
+}
+
+.skill-title {
+    font-size: clamp(1rem, 3vw, 1.1rem);
+    margin-bottom: clamp(0.3rem, 1vw, 0.4rem);
+}
+
+.skill-level {
+    width: 100%;
+    height: 6px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    margin-top: clamp(0.6rem, 2vw, 0.8rem);
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    border-radius: 8px;
+    width: 0;
+    transition: width 1.5s ease;
+}
+
+.html-progress { background-color: var(--barca-blue); }
+.css-progress { background-color: var(--barca-red); }
+.js-progress { background-color: var(--barca-yellow); }
+.bootstrap-progress { background-color: #7952B3; }
+.tailwind-progress { background-color: #38B2AC; }
+
+/* Services Section */
+.services {
+    position: relative;
+    background: var(--section-bg);
+}
+
+.services::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg') center/clamp(200px, 30vw, 250px) repeat;
+    opacity: 0.03;
+}
+
+.services-container {
+    display: flex;
+    justify-content: center;
+    gap: clamp(1rem, 3vw, 1.5rem);
+    padding: 0 clamp(0.6rem, 2vw, 1rem);
+    flex-wrap: wrap;
+}
+
+.service-box {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 4px 16px var(--shadow);
+    padding: clamp(1.2rem, 3vw, 1.5rem);
+    text-align: center;
+    max-width: clamp(300px, 45vw, 400px);
+    width: 100%;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    animation: zoomIn 1s ease-out;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.service-box:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px var(--shadow);
+    background: linear-gradient(45deg, var(--barca-blue), var(--barca-red));
+}
+
+.service-box:hover .service-icon,
+.service-box:hover .service-title,
+.service-box:hover .service-desc {
+    color: white;
+    z-index: 2;
+}
+
+.service-icon {
+    width: clamp(60px, 15vw, 70px);
+    height: clamp(60px, 15vw, 70px);
+    margin: 0 auto clamp(0.8rem, 2vw, 1.2rem);
+    background-color: rgba(0, 77, 152, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(1.4rem, 4vw, 1.8rem);
+    color: var(--barca-blue);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.service-box:hover .service-icon {
+    background-color: white;
+    color: var(--barca-red);
+    transform: scale(1.1);
+}
+
+.service-title {
+    font-size: clamp(1.1rem, 3vw, 1.2rem);
+    margin-bottom: clamp(0.6rem, 2vw, 0.8rem);
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+}
+
+.service-desc {
+    line-height: 1.5;
+    margin-bottom: clamp(0.6rem, 2vw, 0.8rem);
+    font-size: clamp(0.85rem, 2.5vw, 0.9rem);
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+}
+
+/* Projects Section */
+.projects {
+    background: var(--section-bg);
+    position: relative;
+}
+
+.projects::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg') center/clamp(200px, 30vw, 250px) repeat;
+    opacity: 0.03;
+}
+
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(clamp(260px, 85vw, 320px), 1fr));
+    gap: clamp(0.8rem, 2vw, 1.2rem);
+    padding: 0 clamp(0.4rem, 1.5vw, 0.8rem);
+}
+
+.project-card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 4px 16px var(--shadow);
+    overflow: hidden;
+    position: relative;
+    transition: all 0.3s ease;
+    animation: slideUp 0.8s ease-out forwards;
+    opacity: 0;
+    width: 100%;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(40px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.project-card:hover {
+    box-shadow: 0 12px 24px var(--shadow), 0 0 15px var(--barca-yellow);
+}
+
+.project-img {
+    width: 100%;
+    height: clamp(160px, 20vw, 180px);
+    object-fit: cover;
+    display: block;
+}
+
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0, 77, 152, 0.8), rgba(165, 0, 68, 0.8));
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: clamp(0.8rem, 2vw, 1rem);
+    transition: opacity 0.3s ease;
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1;
+}
+
+.project-title {
+    font-size: clamp(1rem, 2.8vw, 1.2rem);
+    color: white;
+    margin-bottom: clamp(0.4rem, 1.5vw, 0.6rem);
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.project-desc {
+    font-size: clamp(0.75rem, 2.2vw, 0.85rem);
+    color: white;
+    margin-bottom: clamp(0.6rem, 1.8vw, 0.8rem);
+    line-height: 1.4;
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(0.3rem, 0.8vw, 0.5rem);
+    justify-content: center;
+    margin-bottom: clamp(0.6rem, 1.8vw, 0.8rem);
+}
+
+.tech-tag {
+    background-color: var(--barca-yellow);
+    color: var(--barca-dark);
+    padding: clamp(0.2rem, 0.8vw, 0.3rem) clamp(0.5rem, 1.5vw, 0.7rem);
+    border-radius: 4px;
+    font-size: clamp(0.7rem, 1.8vw, 0.75rem);
+    font-weight: 600;
+}
+
+.project-btn {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: clamp(0.4rem, 1.5vw, 0.6rem) clamp(0.8rem, 2.5vw, 1rem);
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: clamp(0.75rem, 2.2vw, 0.85rem);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.project-btn:hover {
+    background: var(--barca-yellow);
+    color: var(--barca-dark);
+    border-color: var(--barca-yellow);
+    transform: translateY(-2px);
+}
+
+/* Footer */
+footer {
+    background-color: var(--barca-dark);
+    color: white;
+    padding: clamp(1.5rem, 4vw, 2rem) clamp(0.8rem, 2vw, 1rem);
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(clamp(180px, 90vw, 200px), 1fr));
+    gap: clamp(0.8rem, 2vw, 1rem);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-about h3 {
+    font-size: clamp(1.1rem, 2.8vw, 1.2rem);
+    margin-bottom: clamp(0.5rem, 1.5vw, 0.6rem);
+    color: var(--barca-yellow);
+}
+
+.footer-about p {
+    line-height: 1.5;
+    margin-bottom: clamp(0.6rem, 1.8vw, 0.8rem);
+    font-size: clamp(0.8rem, 2.2vw, 0.85rem);
+}
+
+.about-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: clamp(0.5rem, 1.5vw, 0.6rem);
+    margin-top: clamp(0.6rem, 1.8vw, 0.8rem);
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    font-size: clamp(0.8rem, 2.2vw, 0.85rem);
+    gap: 8px;
+}
+
+.info-item i {
+    color: var(--barca-red);
+    margin-right: 6px;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+}
+
+.social-links {
+    display: flex;
+    gap: clamp(0.5rem, 1.5vw, 0.6rem);
+    margin-top: clamp(0.6rem, 1.8vw, 0.8rem);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: clamp(28px, 7vw, 32px);
+    height: clamp(28px, 7vw, 32px);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background-color: var(--barca-yellow);
+    color: var(--barca-dark);
+    transform: translateY(-4px);
+}
+
+.footer-nav h3 {
+    font-size: clamp(1.1rem, 2.8vw, 1.2rem);
+    margin-bottom: clamp(0.5rem, 1.5vw, 0.6rem);
+    color: var(--barca-yellow);
+}
+
+.footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-links li {
+    margin-bottom: clamp(0.3rem, 1vw, 0.5rem);
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+    position: relative;
+    padding-left: 10px;
+    font-size: clamp(0.8rem, 2.2vw, 0.85rem);
+}
+
+.footer-links a::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--barca-red);
+    transition: transform 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--barca-yellow);
+}
+
+.footer-links a:hover::before {
+    transform: translateX(4px);
+}
+
+.footer-contact h3 {
+    font-size: clamp(1.1rem, 2.8vw, 1.2rem);
+    margin-bottom: clamp(0.5rem, 1.5vw, 0.6rem);
+    color: var(--barca-yellow);
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.5rem, 1.5vw, 0.6rem);
+    max-width: clamp(260px, 85vw, 360px);
+    margin: 0 auto;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: clamp(0.4rem, 1.5vw, 0.6rem);
+    border: 2px solid var(--barca-blue);
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: clamp(0.75rem, 2vw, 0.8rem);
+    transition: border-color 0.3s ease;
+    width: 100%;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--barca-yellow);
+    outline: none;
+}
+
+.contact-form textarea {
+    resize: none;
+    min-height: clamp(70px, 18vw, 80px);
+}
+
+.contact-form button {
+    padding: clamp(0.4rem, 1.5vw, 0.6rem);
+    border: none;
+    border-radius: 4px;
+    background: linear-gradient(45deg, var(--barca-blue), var(--barca-red));
+    color: white;
+    font-size: clamp(0.75rem, 2vw, 0.8rem);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.contact-form button:hover {
+    background: linear-gradient(45deg, var(--barca-red), var(--barca-yellow));
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow);
+}
+
+.copyright {
+    text-align: center;
+    margin-top: clamp(0.8rem, 2vw, 1rem);
+    padding-top: clamp(0.8rem, 2vw, 1rem);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.copyright p {
+    font-size: clamp(0.7rem, 2vw, 0.8rem);
+    opacity: 0.8;
+}
+
+.barca-heart {
+    color: var(--barca-red);
+    animation: heartbeat 1.5s infinite;
+    will-change: transform;
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* Animation Classes | NOT INFINITE */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Media Queries */
+@media (max-width: 992px) {
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-img::before {
+        display: none;
+    }
+
+    .services-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .service-box {
+        max-width: clamp(280px, 80vw, 350px);
+    }
+
+    .about-info {
+        grid-template-columns: 1fr;
+    }
+
+    .projects-container {
+        grid-template-columns: repeat(auto-fit, minmax(clamp(260px, 85vw, 300px), 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: clamp(60%, 70vw, 70%);
+        height: 100vh;
+        background: linear-gradient(45deg, var(--barca-dark), var(--barca-blue));
+        flex-direction: column;
+        padding: clamp(3rem, 8vw, 3.5rem) clamp(1rem, 3vw, 1.5rem);
+        gap: clamp(1rem, 3vw, 1.5rem);
+        box-shadow: -4px 0 8px var(--shadow);
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+    }
+
+    .nav-links.active {
+        display: flex;
+        transform: translateX(0);
+    }
+
+    .nav-links a {
+        font-size: clamp(1.2rem, 4vw, 1.4rem);
+    }
+
+    .theme-toggle {
+        font-size: clamp(1.2rem, 4vw, 1.4rem);
+    }
+
+    .hamburger {
+        display: block;
+        z-index: 101;
+    }
+
+    .hero {
+        min-height: clamp(50vh, 70vh, 60vh);
+    }
+
+    .hero h1 {
+        font-size: clamp(1.6rem, 5vw, 2rem);
+    }
+
+    .hero p {
+        font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+        padding: 0 clamp(0.6rem, 2vw, 0.8rem);
+    }
+
+    .hero-btns {
+        flex-direction: column;
+        gap: clamp(0.6rem, 2vw, 0.8rem);
+    }
+
+    .hero::before {
+        background-size: clamp(60px, 12vw, 80px);
+        animation: none;
+    }
+
+    .section-title h2 {
+        font-size: clamp(1.6rem, 4vw, 1.8rem);
+    }
+
+    .services-container,
+    .skills-container,
+    .projects-container {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: clamp(0.6rem, 1.8vw, 0.8rem);
+    }
+
+    .footer-about,
+    .footer-nav,
+    .footer-contact {
+        max-width: clamp(280px, 90vw, 320px);
+        margin: 0 auto;
+    }
+
+    .footer-about h3,
+    .footer-nav h3,
+    .footer-contact h3 {
+        font-size: clamp(1rem, 2.5vw, 1.1rem);
+    }
+
+    .footer-about p {
+        font-size: clamp(0.75rem, 2vw, 0.8rem);
+    }
+
+    .about-info {
+        grid-template-columns: 1fr;
+        gap: clamp(0.4rem, 1.2vw, 0.5rem);
+    }
+
+    .info-item {
+        font-size: clamp(0.75rem, 2vw, 0.8rem);
+        justify-content: center;
+    }
+
+    .info-item i {
+        font-size: clamp(0.85rem, 2.2vw, 0.9rem);
+        margin-right: 5px;
+    }
+
+    .social-links {
+        gap: clamp(0.4rem, 1.2vw, 0.5rem);
+        margin-top: clamp(0.5rem, 1.5vw, 0.6rem);
+    }
+
+    .social-link {
+        width: clamp(26px, 6.5vw, 30px);
+        height: clamp(26px, 6.5vw, 30px);
+    }
+
+    .footer-links {
+        align-items: center;
+    }
+
+    .footer-links a {
+        font-size: clamp(0.75rem, 2vw, 0.8rem);
+        padding-left: 8px;
+    }
+
+    .contact-form {
+        max-width: clamp(240px, 90vw, 300px);
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        font-size: clamp(0.7rem, 1.8vw, 0.75rem);
+        padding: clamp(0.35rem, 1.2vw, 0.5rem);
+    }
+
+    .contact-form textarea {
+        min-height: clamp(60px, 16vw, 70px);
+    }
+
+    .contact-form button {
+        font-size: clamp(0.7rem, 1.8vw, 0.75rem);
+        padding: clamp(0.35rem, 1.2vw, 0.5rem);
+    }
+
+    .copyright {
+        margin-top: clamp(0.6rem, 1.8vw, 0.8rem);
+        padding-top: clamp(0.6rem, 1.8vw, 0.8rem);
+    }
+
+    .copyright p {
+        font-size: clamp(0.65rem, 1.8vw, 0.75rem);
+    }
+}
+
+@media (max-width: 576px) {
+    .hero h1 {
+        font-size: clamp(1.3rem, 4vw, 1.5rem);
+    }
+
+    .hero p {
+        font-size: clamp(0.7rem, 2.5vw, 0.8rem);
+    }
+
+    .hero-btns .btn {
+        padding: clamp(0.5rem, 2vw, 0.6rem) clamp(0.8rem, 3vw, 1rem);
+        font-size: clamp(0.8rem, 2.5vw, 0.85rem);
+    }
+
+    .container {
+        padding: 0 clamp(0.4rem, 2vw, 0.6rem);
+    }
+
+    .about-img {
+        max-width: clamp(200px, 60vw, 300px);
+    }
+
+    .service-box {
+        max-width: clamp(250px, 80vw, 300px);
+    }
+
+    .project-card {
+        max-width: clamp(250px, 90vw, 280px);
+        margin: 0 auto;
+    }
+
+    .project-img {
+        height: clamp(140px, 18vw, 160px);
+    }
+
+    .project-overlay {
+        padding: clamp(0.6rem, 1.5vw, 0.8rem);
+    }
+
+    .project-title {
+        font-size: clamp(0.9rem, 2.5vw, 1rem);
+    }
+
+    .project-desc {
+        font-size: clamp(0.7rem, 2vw, 0.8rem);
+    }
+
+    .tech-tag {
+        font-size: clamp(0.65rem, 1.6vw, 0.7rem);
+        padding: clamp(0.15rem, 0.6vw, 0.2rem) clamp(0.4rem, 1.2vw, 0.6rem);
+    }
+
+    .project-btn {
+        font-size: clamp(0.7rem, 2vw, 0.8rem);
+        padding: clamp(0.3rem, 1.2vw, 0.5rem) clamp(0.6rem, 2vw, 0.8rem);
+    }
+
+    .section {
+        padding: clamp(1.5rem, 4vw, 2rem) clamp(0.4rem, 2vw, 0.6rem);
+    }
+
+    .section-title h2 {
+        font-size: clamp(1.4rem, 4vw, 1.6rem);
+    }
+
+    .footer-container {
+        gap: clamp(0.5rem, 1.5vw, 0.6rem);
+    }
+
+    .footer-about,
+    .footer-nav,
+    .footer-contact {
+        max-width: clamp(250px, 90vw, 280px);
+    }
+
+    .footer-about h3,
+    .footer-nav h3,
+    .footer-contact h3 {
+        font-size: clamp(0.95rem, 2.3vw, 1rem);
+    }
+
+    .footer-about p {
+        font-size: clamp(0.7rem, 1.8vw, 0.75rem);
+    }
+
+    .about-info {
+        gap: clamp(0.3rem, 1vw, 0.4rem);
+    }
+
+    .info-item {
+        font-size: clamp(0.7rem, 1.8vw, 0.75rem);
+    }
+
+    .info-item i {
+        font-size: clamp(0.8rem, 2vw, 0.85rem);
+    }
+
+    .social-links {
+        gap: clamp(0.3rem, 1vw, 0.4rem);
+    }
+
+    .social-link {
+        width: clamp(24px, 6vw, 28px);
+        height: clamp(24px, 6vw, 28px);
+    }
+
+    .footer-links a {
+        font-size: clamp(0.7rem, 1.8vw, 0.75rem);
+    }
+
+    .contact-form {
+        max-width: clamp(220px, 90vw, 260px);
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        font-size: clamp(0.65rem, 1.6vw, 0.7rem);
+        padding: clamp(0.3rem, 1vw, 0.4rem);
+    }
+
+    .contact-form textarea {
+        min-height: clamp(50px, 14vw, 60px);
+    }
+
+    .contact-form button {
+        font-size: clamp(0.65rem, 1.6vw, 0.7rem);
+        padding: clamp(0.3rem, 1vw, 0.4rem);
+    }
+}
+
+@media (max-width: 320px) {
+    .hero h1 {
+        font-size: clamp(1.1rem, 4vw, 1.2rem);
+    }
+
+    .hero p {
+        font-size: clamp(0.65rem, 2.5vw, 0.7rem);
+    }
+
+    .hero-btns .btn {
+        padding: clamp(0.4rem, 2vw, 0.5rem) clamp(0.6rem, 3vw, 0.8rem);
+        font-size: clamp(0.75rem, 2.5vw, 0.8rem);
+    }
+
+    .service-box {
+        max-width: clamp(220px, 80vw, 260px);
+    }
+
+    .project-card {
+        max-width: clamp(220px, 90vw, 250px);
+    }
+
+    .project-img {
+        height: clamp(120px, 16vw, 140px);
+    }
+
+    .project-title {
+        font-size: clamp(0.85rem, 2.3vw, 0.95rem);
+    }
+
+    .project-desc {
+        font-size: clamp(0.65rem, 1.8vw, 0.75rem);
+    }
+
+    .tech-tag {
+        font-size: clamp(0.6rem, 1.5vw, 0.65rem);
+    }
+
+    .project-btn {
+        font-size: clamp(0.65rem, 1.8vw, 0.75rem);
+        padding: clamp(0.25rem, 1vw, 0.4rem) clamp(0.5rem, 1.8vw, 0.7rem);
+    }
+
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form button {
+        font-size: clamp(0.65rem, 1.8vw, 0.75rem);
+    }
+
+    .footer-about h3,
+    .footer-nav h3,
+    .footer-contact h3 {
+        font-size: clamp(0.9rem, 2.2vw, 0.95rem);
+    }
+
+    .footer-about p {
+        font-size: clamp(0.65rem, 1.6vw, 0.7rem);
+    }
+
+    .about-info {
+        gap: clamp(0.25rem, 0.8vw, 0.3rem);
+    }
+
+    .info-item {
+        font-size: clamp(0.65rem, 1.6vw, 0.7rem);
+    }
+
+    .info-item i {
+        font-size: clamp(0.75rem, 1.8vw, 0.8rem);
+    }
+
+    .social-links {
+        gap: clamp(0.25rem, 0.8vw, 0.3rem);
+    }
+
+    .social-link {
+        width: clamp(22px, 5.5vw, 26px);
+        height: clamp(22px, 5.5vw, 26px);
+    }
+
+    .footer-links a {
+        font-size: clamp(0.65rem, 1.6vw, 0.7rem);
+        padding-left: 6px;
+    }
+
+    .contact-form {
+        max-width: clamp(200px, 90vw, 240px);
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        font-size: clamp(0.6rem, 1.5vw, 0.65rem);
+        padding: clamp(0.25rem, 0.8vw, 0.35rem);
+    }
+
+    .contact-form textarea {
+        min-height: clamp(45px, 12vw, 55px);
+    }
+
+    .contact-form button {
+        font-size: clamp(0.6rem, 1.5vw, 0.65rem);
+        padding: clamp(0.25rem, 0.8vw, 0.35rem);
+    }
+
+    .copyright p {
+        font-size: clamp(0.6rem, 1.6vw, 0.7rem);
+    }
+}

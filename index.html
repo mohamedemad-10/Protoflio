@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Front-End Developer | Barcelona Enthusiast</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading">
+        <div class="loader"></div>
+        <div class="barca-logo"></div>
+        <h2 style="color: white; margin-top: 15px; letter-spacing: 2px; font-size: clamp(1rem, 3vw, 1.2rem);">LOADING</h2>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Mohamed<span>Emad</span></a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#footer">Contact</a></li>
+                <li><button class="theme-toggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></button></li>
+            </ul>
+            <button class="hamburger"></button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 id="typewriter">Designing Websites with <span>Barça</span> Soul</h1>
+            <p>I'm a front-end developer crafting responsive, dynamic websites inspired by FC Barcelona’s passion and precision. Let's create something unforgettable!</p>
+            <div class="hero-btns">
+                <a href="#services" class="btn btn-primary">View Services</a>
+                <a href="#footer" class="btn btn-secondary">Contact Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>About Me</h2>
+            </div>
+            <div class="about-content fade-in">
+                <div class="about-img">
+                    <img src="./img/avatar.png" alt="Developer Profile">
+                </div>
+                <div class="about-text">
+                    <h3>Front-End Developer with Barça DNA</h3>
+                    <p>Hi! I'm Mohamed Emad, a passionate Front-End Developer who builds stunning and functional websites, inspired by FC Barcelona’s spirit of excellence.</p>
+                    <p>With expertise in HTML5, CSS3, JavaScript, Bootstrap, and Tailwind CSS, I transform ideas into responsive, user-friendly websites that leave a lasting impression. My work combines technical precision with creative vision, delivering exceptional user experiences aligned with client goals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section skills">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Technical Skills</h2>
+            </div>
+            <div class="skills-container fade-in">
+                <div class="skill-box">
+                    <div class="skill-icon">
+                        <i class="fab fa-html5"></i>
+                    </div>
+                    <h3 class="skill-title">HTML5</h3>
+                    <p>Creating semantic and accessible web markup.</p>
+                    <div class="skill-level">
+                        <div class="skill-progress html-progress" data-progress="95"></div>
+                    </div>
+                </div>
+                <div class="skill-box">
+                    <div class="skill-icon">
+                        <i class="fab fa-css3-alt"></i>
+                    </div>
+                    <h3 class="skill-title">CSS3</h3>
+                    <p>Styling with modern CSS, animations & more.</p>
+                    <div class="skill-level">
+                        <div class="skill-progress css-progress" data-progress="90"></div>
+                    </div>
+                </div>
+                <div class="skill-box">
+                    <div class="skill-icon">
+                        <i class="fab fa-js"></i>
+                    </div>
+                    <h3 class="skill-title">JavaScript</h3>
+                    <p>Building interactive & dynamic web applications.</p>
+                    <div class="skill-level">
+                        <div class="skill-progress js-progress" data-progress="85"></div>
+                    </div>
+                </div>
+                <div class="skill-box">
+                    <div class="skill-icon">
+                        <i class="fab fa-bootstrap"></i>
+                    </div>
+                    <h3 class="skill-title">Bootstrap</h3>
+                    <p>Developing responsive layouts with Bootstrap framework.</p>
+                    <div class="skill-level">
+                        <div class="skill-progress bootstrap-progress" data-progress="80"></div>
+                    </div>
+                </div>
+                <div class="skill-box">
+                    <div class="skill-icon">
+                        <i class="fab fa-tailwind"></i>
+                    </div>
+                    <h3 class="skill-title">Tailwind CSS</h3>
+                    <p>Building modern, utility-first CSS designs.</p>
+                    <div class="skill-level">
+                        <div class="skill-progress tailwind-progress" data-progress="75"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section services">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>My Services</h2>
+            </div>
+            <div class="services-container fade-in">
+                <div class="service-box">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3 class="service-title">Web Design</h3>
+                    <p class="service-desc">Creating beautiful, responsive websites focused on user experience and modern design principles, inspired by FC Barcelona’s elegance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section projects">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>My Projects</h2>
+            </div>
+            <div class="projects-container fade-in">
+                <!-- Project Cards with updated descriptions -->
+                <div class="project-card" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="500">
+                    <img src="./img/proj-1.png" alt="Clinic Website" class="project-img">
+                    <div class="project-overlay">
+                        <h3 class="project-title">Clinic Website</h3>
+                        <p class="project-desc">A modern clinic website designed for effortless appointment booking.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">API</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                        <a href="https://heart-clinic-cyan.vercel.app/" class="project-btn">View Project</a>
+                    </div>
+                </div>
+
+                <div class="project-card" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="500">
+                    <img src="./img/proj-2.png" alt="E-Commerce Store" class="project-img">
+                    <div class="project-overlay">
+                        <h3 class="project-title">E-Commerce Store</h3>
+                        <p class="project-desc">A responsive online store featuring a sleek and modern design.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">CSS3</span>
+                        </div>
+                        <a href="https://clothes-website-six.vercel.app/" class="project-btn">View Project</a>
+                    </div>
+                </div>
+
+                <div class="project-card" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="500">
+                    <img src="./img/proj-3.png" alt="Ramadan Website" class="project-img">
+                    <div class="project-overlay">
+                        <h3 class="project-title">Ramadan Website</h3>
+                        <p class="project-desc">A dynamic Ramadan-themed website featuring celebrations and a to-do list.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">CSS3</span>
+                        </div>
+                        <a href="https://ramdan-phi.vercel.app/" class="project-btn">View Project</a>
+                    </div>
+                </div>
+
+                <div class="project-card" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="500">
+                    <img src="./img/proj-4.png" alt="Restaurant Website" class="project-img">
+                    <div class="project-overlay">
+                        <h3 class="project-title">Restaurant Website</h3>
+                        <p class="project-desc">A stylish restaurant website with menu, prices, and elegant animations.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                        <a href="https://resturant-website-kappa.vercel.app/" class="project-btn">View Project</a>
+                    </div>
+                </div>
+
+                <div class="project-card" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="500">
+                    <img src="./img/proj-5.png" alt="Travel Website" class="project-img">
+                    <div class="project-overlay">
+                        <h3 class="project-title">Travel Website</h3>
+                        <p class="project-desc">A travel platform showcasing destinations with real-time data and animations.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Bootstrap</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">HTML5</span>
+                        </div>
+                        <a href="https://travel-website-mocha.vercel.app/" class="project-btn">View Project</a>
+                    </div>
+                </div>
+
+                <div class="project-card" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="500">
+                    <img src="./img/proj-6.png" alt="Social Studies Website" class="project-img">
+                    <div class="project-overlay">
+                        <h3 class="project-title">Social Studies Platform</h3>
+                        <p class="project-desc">An interactive educational platform for social studies learning.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">Bootstrap</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                        <a href="https://socail-studie.vercel.app/" class="project-btn">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="footer-container">
+            <div class="footer-about">
+                <h3>DevBarca</h3>
+                <p>Passionate front-end developer and FC Barcelona fan, crafting web experiences with Barça’s tiki-taka flair. Let's build something extraordinary!</p>
+                <div class="about-info">
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email: mohamedemad.fr<br>ont@gmail.com</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <span>Phone: +20 155 804 2651</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Location: Qwesna, Egypt</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-trophy"></i>
+                        <span>Freelance: Available</span>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/mohamedemad-10" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://twitter.com" class="social-link" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/mohamedemad.coder/" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-nav">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#footer">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Me</h3>
+                <form id="contact-form" class="contact-form">
+                    <input type="text" name="name" placeholder="Your Full Name" required>
+                    <input type="email" name="email" placeholder="Your Email Address" required>
+                    <textarea name="message" placeholder="Your Message Here" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 DevBarca. All rights reserved. Crafted with ❤️ by <span class="barca-heart">Mohamed Emad</span>.</p>
+        </div>
+    </footer>
+
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+</html>
